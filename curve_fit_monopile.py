@@ -257,7 +257,17 @@ plt.savefig('mass_vs_d')
 
 
 indx = np.flip(np.argsort(np.abs(dependencies['Total Mass'])))
-dependencies.iloc[indx[:20]].plot.bar()
+ax = dependencies.iloc[indx[:20]].plot.bar()
+
+textstr = '\n'.join([f'{k}: {v}' for k, v in {k: v for k, v in zip(short_in, long_in)}.items()])
+
+# ax.hist(x, 50)
+# these are matplotlib.patch.Patch properties
+props = dict(boxstyle='round', facecolor='white', alpha=0.5)
+
+# place a text box in upper left in axes coords
+ax.text(0.99, 0.01, textstr, transform=ax.transAxes, fontsize=10,
+        verticalalignment='bottom', ha='right', bbox=props)
 # [for d in dependencies]
 plt.tight_layout()
 plt.savefig('dependencies')
