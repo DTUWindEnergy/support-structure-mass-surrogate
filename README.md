@@ -3,5 +3,7 @@
 Surrogate model of support structure mass
 
 
-**curve_fit_monopile.py** trains surrogate models based on the output of monopile and turbine optimizations. The data is located in the **tower_mass_results.dat** file.
-The surrogate is available in excel-format in the **surrrogate** folder.
+Surrogate models of Tower Mass, Monopile Mass and Total Mass of support structures for offshore wind turbines.
+**Quadratic Least Squares** 
+The model is trained with the Quadratic Least Squares (QLS) regression. To load the models run the load_QLS script.
+Requires openturns and scikit learn
