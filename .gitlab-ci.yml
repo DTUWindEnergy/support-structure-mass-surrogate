@@ -1,0 +1,66 @@
+image: continuumio/anaconda3
+
+# ===== TEST ssms linux=====
+test_ssms:
+  stage: 
+    test
+  script:
+  - pip install -e .[test]
+  - python -m pytest
+  tags:
+  - debian
+
+# ===== TEST ssms windows=====
+test_ssms_windows:
+  stage:
+    test
+  coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
+  script:
+  - conda init powershell
+  - "if (test-path $PROFILE.CurrentUserAllHosts) { & $PROFILE.CurrentUserAllHosts}"
+  - conda activate ssms
+  - pip install -e . --no-deps
+  - pytest --cov-report term-missing:skip-covered --cov=ssms --cov-config .coveragerc
+  tags:
+  - ANMH_old
+
+# ===== DEPLOY ssms docs=====
+pages:
+  stage:  
+    deploy
+  script:  
+  - pip install -e .[docs] --upgrade
+  - cd docs; make html
+  - cd ../; mv docs/build/html public/
+  artifacts:
+    paths:
+    - public
+  only: 
+  - /^test_docdeploy.*/ 
+  - main
+  tags: 
+  - debian
+
+# ===== DEPLOY publish ssms on pypi=====
+pypi:
+  stage:
+    deploy
+  only:
+    - tags
+    - test_pypi
+  script:
+    - apt-get update
+    - apt-get install -y pandoc
+    - pip install --upgrade pip
+    - pip install pypandoc
+    - pip install -e . --upgrade
+    - python -c 'from git_utils import get_tag; get_tag(verbose=True)'
+    - python -m pip install -U setuptools wheel
+    - python setup.py sdist bdist_wheel
+    - python -m pip install -U twine
+    - python -c 'from git_utils import rename_dist_file; rename_dist_file()'
+    - twine upload dist/* -u $TWINE_USERNAME -p $TWINE_PASSWORD
+    #- twine upload --repository-url https://test.pypi.org/legacy/ dist/* -u $TWINE_USERNAME -p $TWINE_PASSWORD # for testing purposes
+  tags:
+  - debian
+

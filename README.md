@@ -1,6 +1,6 @@
 # Support Structure Mass Surrogate
 
-Surrogate model of support structure mass
+Surrogate model of support structure mass for offshore wind turbines
 
 
 Surrogate models of Tower Mass, Monopile Mass and Total Mass of support structures for offshore wind turbines.
