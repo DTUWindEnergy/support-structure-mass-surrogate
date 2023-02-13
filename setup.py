@@ -42,6 +42,7 @@ setup(name='ssms',
           'ssms': [
             'data/tower_mass_results.dat',
             'data/tower_mass_results_extended_depth_results.dat',
+            'models/QLS/*.pickle',
             ],},
       install_requires=[
           'numpy',
