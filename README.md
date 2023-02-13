@@ -19,5 +19,5 @@ Requires openturns and scikit learn
 [MIT](https://gitlab.windenergy.dtu.dk/TOPFARM/basic-plugins/support-structure-mass-surrogate/blob/main/LICENSE)
 
 ## Documentation, installation, etc:
-[https://topfarm.pages.windenergy.dtu.dk/support-structure-mass-surrogate](https://topfarm.pages.windenergy.dtu.dk/support-structure-mass-surrogate).
+[https://topfarm.pages.windenergy.dtu.dk/basic-plugins/support-structure-mass-surrogate/](https://topfarm.pages.windenergy.dtu.dk/basic-plugins/support-structure-mass-surrogate/).
 
