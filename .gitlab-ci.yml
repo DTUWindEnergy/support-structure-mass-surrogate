@@ -29,6 +29,13 @@ pages:
   stage:  
     deploy
   script:  
+  - apt-get update
+  - apt-get -y install make pandoc graphviz
+  - pip install --upgrade pip
+  - pip install pypandoc
+  - pip install sphinx --upgrade
+  - pip install nbsphinx --upgrade
+  - pip install nbconvert --upgrade
   - pip install -e .[docs] --upgrade
   - cd docs; make html
   - cd ../; mv docs/build/html public/
@@ -50,9 +57,12 @@ pypi:
     - test_pypi
   script:
     - apt-get update
-    - apt-get install -y pandoc
+    - apt-get -y install make pandoc graphviz
     - pip install --upgrade pip
     - pip install pypandoc
+    - pip install sphinx --upgrade
+    - pip install nbsphinx --upgrade
+    - pip install nbconvert --upgrade
     - pip install -e . --upgrade
     - python -c 'from git_utils import get_tag; get_tag(verbose=True)'
     - python -m pip install -U setuptools wheel
