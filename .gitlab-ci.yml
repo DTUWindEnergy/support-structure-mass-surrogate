@@ -24,6 +24,19 @@ test_ssms_windows:
   tags:
   - ANMH_old
 
+# ===== Check code style =====
+check_code_style: 
+  stage:  
+    test
+  script:
+  - pip install -e . --user
+  - pycodestyle --ignore=E501,W504,E741 ssms
+  tags: 
+  - ci-ubuntu
+  rules:
+  - if: $CI_COMMIT_BRANCH == "main"
+  - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
 # ===== DEPLOY ssms docs=====
 pages:
   stage:  

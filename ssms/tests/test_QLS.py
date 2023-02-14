@@ -12,6 +12,7 @@ import pytest
 from ssms.models import model_path
 from ssms.load_QLS import QLSModel, get_r2
 
+
 def test_QLS():
     surrogate_path = os.path.join(model_path, 'QLS')
     model_indicator = '_QLS_surrogate_model.pickle'
@@ -37,10 +38,10 @@ def test_QLS():
 
     # predict
     qlsm = QLSModel(dic['models'][out_item], dic['input_scaler'], dic['output_scalers'][output_channel])
-    ## float input
+    # float input
     res = qlsm.predict(RP=11, D=214, HTrans=13, HHub_Ratio=0.7, WaterDepth=32, WaveHeight=3.5, WavePeriod=6, WindSpeed=9)
     np.testing.assert_allclose(res, 642458.07408856)
 
-    ## array-like input
-    res = qlsm.predict(RP=[11, 12], D=[214, 220], HTrans=[13, 14], HHub_Ratio=2*[0.7], WaterDepth=2*[32], WaveHeight=2*[3.5], WavePeriod=2*[6], WindSpeed=2*[9])
+    # array-like input
+    res = qlsm.predict(RP=[11, 12], D=[214, 220], HTrans=[13, 14], HHub_Ratio=2 * [0.7], WaterDepth=2 * [32], WaveHeight=2 * [3.5], WavePeriod=2 * [6], WindSpeed=2 * [9])
     np.testing.assert_allclose(res, [642458.07408856, 684316.37584743])
