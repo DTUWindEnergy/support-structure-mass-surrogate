@@ -9,7 +9,7 @@ import os
 import pickle
 import matplotlib.pyplot as plt
 import numpy as np
-
+from ssms.models import model_path
 
 class QLSModel(object):
     def __init__(self, model, input_scaler, output_scaler):
@@ -36,12 +36,12 @@ def main():
         plt.close('all')
 
         # load the surrogates
-        model_path = 'models/QLS'
+        surrogate_path = os.path.join(model_path, 'QLS')
         model_indicator = '_QLS_surrogate_model.pickle'
 
         files = []
         IPs = []
-        for file in os.listdir(model_path):
+        for file in os.listdir(surrogate_path):
             if model_indicator in file:
                 IP = float(file.split(model_indicator)[0])
                 files.append(file)
@@ -50,7 +50,7 @@ def main():
         IP_item = 0
         IP = IPs[IP_item]
         print(f'IP: {IP}MW')
-        path = os.path.join(model_path, files[IP_item])
+        path = os.path.join(surrogate_path, files[IP_item])
         with open(path, 'rb') as f:
             dic = pickle.load(f)
 
