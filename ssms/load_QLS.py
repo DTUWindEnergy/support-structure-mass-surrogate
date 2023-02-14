@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from ssms.models import model_path
 
+
 class QLSModel(object):
     def __init__(self, model, input_scaler, output_scaler):
         self.model, self.input_scaler, self.output_scaler = model.getMetaModel(), input_scaler, output_scaler
