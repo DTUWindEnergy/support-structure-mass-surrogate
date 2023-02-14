@@ -1,5 +1,6 @@
 [run]
 omit = 
 	ssms/tests/*
+	ssms/curve_fit_monopile.py
 [report]
 fail_under = 1
