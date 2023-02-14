@@ -1,5 +1,6 @@
 [![pipeline status](https://gitlab.windenergy.dtu.dk/TOPFARM/basic-plugins/support-structure-mass-surrogate/badges/main/pipeline.svg)](https://gitlab.windenergy.dtu.dk/TOPFARM/basic-plugins/support-structure-mass-surrogate/-/commits/main)
 [![coverage report](https://gitlab.windenergy.dtu.dk/TOPFARM/basic-plugins/support-structure-mass-surrogate/badges/main/coverage.svg)](https://gitlab.windenergy.dtu.dk/TOPFARM/basic-plugins/support-structure-mass-surrogate/commits/main)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7635684.svg)](https://doi.org/10.5281/zenodo.7635684)
 [![PyPi](https://img.shields.io/pypi/v/ssms)](https://pypi.org/project/ssms/)
 [![License](https://img.shields.io/pypi/l/ssms)](https://gitlab.windenergy.dtu.dk/TOPFARM/basic-plugins/support-structure-mass-surrogate/blob/main/LICENSE)
 # Support Structure Mass Surrogate
