@@ -11,7 +11,7 @@ from unittest import mock
 
 
 def get_main_modules():
-    package = py_wake
+    package = ssms
     modules = []
     for _, modname, _ in pkgutil.walk_packages(package.__path__, package.__name__ + '.'):
         with warnings.catch_warnings():
